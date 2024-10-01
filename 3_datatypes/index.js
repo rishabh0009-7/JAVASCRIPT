@@ -5,7 +5,7 @@
 
 // ecmascript - js standards for writing code
 
-// in js no need to write dataype same like python
+// in js no need to write dataype  in variable same like python
 
 let name = "rishabh";
 let age = 20;
