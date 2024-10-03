@@ -1,5 +1,7 @@
 // // objects in js - same as dictionary in python 
 // //jab bhi literals ki tarah banata hai to singleton object nhi banta hai constructors ki tarah banata hai tab banta hai 
+
+
  
 
 // //constructor method  - we will not use 
@@ -45,8 +47,6 @@
 // //     lastlogindays: ["monday","tuesday"]
 
 // // }
-
-
 // //  console.log(juser[mysym])
 
 
@@ -64,3 +64,74 @@
 // console.log(juser.greetingtwo())
 // ----------------------------------------------------------------------------------
 
+
+
+// const tinderuser = new Object() // we can also do like  this to create an object 
+
+const tinderuser = {} //empty object 
+
+tinderuser.id = "123abc"
+tinderuser.name = "rishabh"
+tinderuser.loggedin = false
+console.log(tinderuser)
+
+
+// we can aslo create obejct ke andar object 
+// const regularuser= {
+//     email:"rishabletsdoit7838@gmail.com",
+//     fullname: {
+//         userfullname:{
+//             firstname: "rishabh",
+//             lastname :"srivatsav"
+//         }
+
+//     }
+// }
+
+
+// //how to access
+// console.log(regularuser.fullname.userfullname.firstname)
+
+
+// //jaise arrays ko combine kiya tha vaise hi object sko bhi kar skta hai
+// const obj1 = {1:"a",2:"b"}
+// const obj2 = {3:"c",4:"d"}
+
+// // const obj3 = {obj1,obj2} /// aisa kara  object ke nadar object ajayega 
+
+// //  assign --  avoid  less use 
+// // const obj3 = object.assign({},obj1,obj2) 
+
+// //spread
+// const obj = {...obj1,...obj2}
+// console.log(obj) 
+
+//jab database se value ayegi to array of objects aayega 
+//array ke andar bht saare objects
+const users = [
+    {
+        id:1,
+        email:"rishab@gmail.com",
+    },
+    {
+        id:1,
+        email:"rishab@gmail.com",
+    },
+    {
+        id:1,
+        email:"rishab@gmail.com",
+    }
+]
+//how to access 
+users[1].email // iska matlab hai ki user ka 1 st walaa acces karna hai jo ki hai object isliye .lagaya 
+
+
+//kisi object ki saare keys print karana hai 
+console.log(Object.keys(tinderuser))
+console.log(Object.values(tinderuser))
+
+//entries - iska use se har key ko ek  alag array mai daal diya jataa hai 
+console.log(Object.entries(tinderuser))
+
+//koi value exist karti hai ya nhi vo pata lagana ke lie 
+console.log(tinderuser.hasOwnProperty('islogged'))
