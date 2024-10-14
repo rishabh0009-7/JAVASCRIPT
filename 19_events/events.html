@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>events in js </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+    
+</body>
+
+<script>
+    // js is a sequential lang but there are exceptions -->events,asynch js
+
+ //hum onclick direct html pe laga skta hai par ye ek acchi approach nhi hai 
+//u can use dom par isem bhi problems ho skti hai 
+// document.getElementById('owl').onclick = function(){
+//     alert("owl clicked ")
+// }
+
+// method 3 better way -->event listeners (bht saare events ho skta hai par here we use click)
+document.getElementById('owl').addEventListener('click' ,function(){alert("owl clicked ")},false) //ye 3 parameters likhna hai isma  false default hai isliye likho ya nhi farak nhi padta
+
+
+//some  event methods 
+//type, timestamp,default prevented ,target,toelement,srceleemnt , currenttarget,clientx,y ,screenx,y
+//altkey,ctrlkey,shiftkey,keycode
+
+
+//event propogation->
+
+// Event propagation refers to the way events flow through the DOM (Document Object Model) after being triggered. In JavaScript, event propagation occurs in two main phases:
+
+// Capturing phase (or trickling phase) : The event starts at the topmost element (window) and trickles down to the target element.
+// Bubbling phase (false ): After reaching the target element, the event bubbles back up through its ancestors (parent elements) to the top of the DOM (window).
+
+
+//note - isme image  jo hai vo parent hai aur owl waali image child to owl pe 2 event ho raha click pe ek to uska khud ka click event aur ek images ka event to konsa pehle aayega alert ? agar false hai to child -->parent aur agar true hai to parent -->child
+document.getElementById('images').addEventListener('click', function(event)  {
+        console.log("clicked inside the ul");
+    }, false)
+
+    document.getElementById('owl').addEventListener('click', function(event)  {
+        console.log("owl clicked");
+         // Prevent event from bubbling up to the parent
+        event.stopPropagation()
+    }, false)
+
+//isem false hai to bubble phase chalega yaani pehle owl walaa click ka dikhega then image ka 
+// agar true /usecapture likha to pehle parenty fir owl ayega 
+    // When the child button is clicked, it triggers both the button’s (child) event listener and the parent’s (parent) event listener, because the event bubbles up to the parent element.
+// However, by using event.stopPropagation() in the child’s event listener, the event propagation is stopped, preventing it from reaching the parent element.
+
+
+
+//stop propogation -->iske use se bubble phase nhi hoga 
+
+//prevent default --> maan lo kisi ka default evet hai click karne pe  google par lejataa hai  par hume nhi karna ye to  isliye we use prevent default
+document.getElementById('google').addEventListener('click',function(event){},false)
+event.preventDefault()
+
+// ab hum chahte hau jitnma bhi li hai unpe click kare aur vo gayab hojaya
+ document.querySelector('#images').addEventListener('click',function(event){
+    console.log(event.target.parentNode) //pArentnode isliye  kyuki hume imaged nhi unke parent li ko hi gayab kardena hai 
+    let removeit = e.target.parentNode
+    removeit.remove() 
+
+    // //method 2 
+    // let removeit = e.target.parentNode
+    // removeit.parentNode.removeChild(removeit)
+},false)
+
+//yaha  google click karne bhi images remove ho rahi hai
+
+    //hum chahte hai li mai iamges remove  ho aur agar hum dusre li yani google pe click kare to tb  na ho iske liye humne condn deni padegi aur parent node ke badla tag name use karna hoga
+
+ document.querySelector('#images').addEventListener('click',function(event){
+    console.log(event.target.tagName) //pArentnode isliye  kyuki hume imaged nhi unke parent li ko hi gayab kardena hai 
+    if(event.target.tagName=== 'IMG'){
+    let removeit = e.target.parentNode
+    removeit.remove()
+ }
+ },false)
+</script>
+</html>
