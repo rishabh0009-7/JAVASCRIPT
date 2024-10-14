@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom3</title>
+</head>
+<body style="background-color: #2121; color: #fff;">
+    
+</body>
+<script>
+    //how to create a new element (html elemnt ) in dom  using js 
+    const  div =  document.createElement('div')
+    console.log(div);
+
+    //how to add class ,id in new element 
+    div.className ="main" // <div class = "main"></div>
+    div.id=math.round( math.random() *10 +1)
+    div.setAttribute("title","generated title")
+    div.style.backgroundColor = "pink"
+    div.style.padding = "12px"
+    // div.innerText= "chai lover "
+
+    // better way for inner text  (both are corerect)
+    const addtext= document.createTextNode("chailover")
+    div.appendChild(addtext)
+
+
+    //ye sab banto gya hai par console par show nhi ho raha uske liye
+    document.body.appendChild(div)
+</script>
+</html>
