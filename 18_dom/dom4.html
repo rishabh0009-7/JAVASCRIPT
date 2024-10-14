@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom4</title>
+</head>
+<body style="background-color: #221222; color: #ffff;">
+    <ul  class="language">
+        <li>javascript</li>
+    </ul>
+    
+</body>
+
+<script>
+    //now we have to add one more list item using dom  where there is  already existed item
+
+    //method 2 -->function mai daaldiya taaki jab bhi banan ho isse hi copy paste karde 
+    function addlanguage (langname){
+        const li = document.createElement('li')
+        li.innerHTML = `${LANGNAME}` 
+        //ab ye ban to gya par show nhi hoga to show 
+        document.querySelector('.language').appendChild(li )
+        addlanguage("python") //function call
+        
+
+        //ye method sahi hai bas dikkat ye hai ki  abhi to ek hai list already existed agar 1000 hoti to ye 1000 pe ek ek karke jataa aur fir last mai li daalta 
+        //isme inner html use kiya to ek ek karke traversing hoti hai 
+
+
+            
+        
+    }
+
+    //more optimised way becoz isma seedha insert karna pad raha  poora tree traverse nhi karna pada without innner html use kar raha hai
+    function addoptilanguage(langname){
+            const li = document.createElement('li')
+            li.appendChild(document.createTextNode(langname))
+            document.querySelector('.language').appendChild(li ) //queryselector isliye use kiya kyuki bina select kare kaisa daal dega 
+        addlanguage("python") //function call
+    }
+
+
+
+    //edit elemnt in dom  //new elemnt banayega aur usko replace kardenge
+    const seclang =document.querySelector("li:nth-child(2)") //lika nth child ka second element 
+    document.createElement('li')
+    newli.textcontent = "mojo"
+    seclang.replaceWith(newli) 
+
+
+    //more  way 
+    const firstlang = document.querySelector("li:first-child")
+    firstlang.outerHTML= '<li>typescript</li>'
+
+//delete elemnt in dom 
+const lastlang= document.querySelector("li:last-child")
+lastlang.remove()
+</script>
+</html>
