@@ -81,6 +81,9 @@
 
 
 
-const tempitem = document.getElementsByClassName('list')
-//method to convert 
- Array.from(tempitem) // now it will get convert  and we can use  loops  and any array method  like map etc  
+// const tempitem = document.getElementsByClassName('list')
+// //method to convert 
+//  Array.from(tempitem) // now it will get convert  and we can use  loops  and any array method  like map etc  
+
+
+
