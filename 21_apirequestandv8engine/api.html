@@ -6,7 +6,9 @@
     <title>api</title>
 </head>
 <body style="background-color: #212121; color: #FFFF">
-    0	UNSENT-	Client has been created. open() not called yet.
+
+    <!-- ready states in xml --> 
+    <!-- 0	UNSENT-	Client has been created. open() not called yet.
     1	OPENED	-open() has been called.
     2	HEADERS_RECEIVED-	send() has been called, and headers and status are available.
     3	LOADING-	Downloading; responseText holds partial data.
@@ -16,7 +18,50 @@
 <SCript>
     const requesturl = 'https://api.github.com/users/hiteshchoudhary'
    const xhr  = new XMLHttpRequest ();
-   xhr.open('GET' ,requesturl)  //par sirf itna likhanse nhi hoga send bhi likhna padega  
+   xhr.open('GET' ,requesturl)  // ye open hi request ko bhejta hai par sirf itna likhanse nhi hoga send bhi likhna padega  
+   //check karta hai raedystae kya hai 
+   console.log(xhr.readyState); //1
+   //to isse to current state btayega par agar hum chahte hai ki continouly track kaera state to uske liye we  use  onreadystatechange
+   
    xhr.send()
+
+
+//     const requesturl = 'https://api.github.com/users/hiteshchoudhary'
+//    const xhr  = new XMLHttpRequest ();
+//    xhr.open('GET' ,requesturl)
+//    //to continously track state
+//    xhr.onreadystatechange = function(){
+//     console.log(xhr.readyState); 
+
+//    } 
+   
+   
+//    xhr.send()
+
+//agar kisi raedy state pe jaaek koi kaam karwana hai  to usme condn laga do 
+
+// const requesturl = 'https://api.github.com/users/hiteshchoudhary'
+//    const xhr  = new XMLHttpRequest ();
+//    xhr.open('GET' ,requesturl)
+//    //to continously track state
+//    xhr.onreadystatechange = function(){
+//     console.log(xhr.readyState); 
+//     if (xhr.readyState===4){
+//         const data = JSON.parse(this.responseText); //rsponse text hamesha most of the time string mai hi ataa hai  isliye isse object mai convert kar liya taaki iske andar ke data nikaal ke usko use kar payaa
+//         console.log(data);
+//         console.log(data.followers);
+        
+        
+//     }
+
+//    } 
+   
+   
+//    xhr.send()
+
+
+
+
+
 </SCript>
 </html>
